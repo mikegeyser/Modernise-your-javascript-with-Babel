@@ -1,0 +1,35 @@
+- Introduction
+  - Who am I
+  - Agenda
+
+- Babel
+  - What is babel
+  - What is ES 6
+  - source-to-source compiling
+  - Compare to coffeescript/typescript
+  - ES 6/2015
+    - Browser support
+    - One Javascript - “don’t break the web”
+    - ES2016
+
+- Compelling reasons to use ES 6
+  - let/const
+    - var is function scoped
+    - let is block scoped
+    - const is immutable
+  - module
+    - iife
+    - common js
+    - preset doesn't work?! fuck.
+    - webpack? too much?
+  - class
+    - Syntactical sugar
+    - Extends
+  - arrow functions
+    - Same lexical 'this' as their surrounding code.
+  - template strings / interpolation
+  - destructuring
+  - default + rest + spread
+  - Many more useful API features
+
+- Demo
