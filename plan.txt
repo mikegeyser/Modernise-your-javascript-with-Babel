@@ -7,6 +7,7 @@
   - What is ES 6
   - source-to-source compiling
   - Compare to coffeescript/typescript
+    - Progressive enhancement
   - ES 6/2015
     - Browser support
     - One Javascript - “don’t break the web”
@@ -17,19 +18,20 @@
     - var is function scoped
     - let is block scoped
     - const is immutable
-  - module
-    - iife
-    - common js
-    - preset doesn't work?! fuck.
-    - webpack? too much?
-  - class
-    - Syntactical sugar
-    - Extends
   - arrow functions
     - Same lexical 'this' as their surrounding code.
   - template strings / interpolation
   - destructuring
   - default + rest + spread
+  - class
+    - Syntactical sugar
+    - Extends
+  - module
+    - iife
+    - common js
+    - preset doesn't work?! fuck.
+    - webpack? too much?
+    - drop em.
   - Many more useful API features
 
 - Demo
