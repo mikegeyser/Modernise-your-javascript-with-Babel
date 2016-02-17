@@ -22,7 +22,10 @@ describe("1) var / let / const: ", function() {
     expect(test).toBe(1);
   });
 
-  // xit("const should be immutable", function() {
+  /* This needs to be run with the --force grunt option so that babel doesn't
+  fail, because it detects that you're trying to overwrite a single-assigment
+  variable. */
+  // xit("const should be single-assigment", function() {
   //   const test = 1
   //   test = 20;
   //

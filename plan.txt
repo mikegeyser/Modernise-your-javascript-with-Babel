@@ -3,15 +3,18 @@
   - Agenda
 
 - Babel
-  - What is babel
   - What is ES 6
-  - source-to-source compiling
-  - Compare to coffeescript/typescript
-    - Progressive enhancement
   - ES 6/2015
     - Browser support
     - One Javascript - “don’t break the web”
     - ES2016
+
+  - What is babel
+    - source-to-source compiling
+  
+  - Compare to coffeescript/typescript
+    - Progressive enhancement
+
 
 - Compelling reasons to use ES 6
   - let/const

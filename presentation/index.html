@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Modernise your javascript with Babel</title>
+
+	<link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/custom.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+		document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+	<style type="text/css">
+		.bbd-logo {
+			height: 100px;
+			width: 100px;
+			background-image: url('images/bbd.png');
+			background-repeat: no-repeat;
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+
+		div.reveal aside.controls {
+			right: 25px;
+			bottom: 15px;
+		}
+
+		div.reveal {}
+
+		div.reveal h1 {
+			font-size: 3em;
+			line-height: 1.25em;
+		}
+
+		.main-title {
+			height: 7em;
+		}
+
+		div.reveal h2 {
+			font-size: 45px;
+			margin-bottom: 40px;
+		}
+
+		div.reveal img {
+			border: 0;
+			box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+			background: rgba(0, 0, 0, 0);
+		}
+
+		div.reveal img.twitter,
+		div.reveal img.github {
+			top: 30px;
+			position: relative;
+			padding-right: 15px;
+		}
+
+		div.reveal pre,
+		div.reveal ul > li {
+			margin-bottom: 1em;
+		}
+
+		div.reveal ul {
+			margin-top: 1.25em;
+			list-style-type: none;
+			text-align: center;
+		}
+
+		div.reveal ul li b {
+			width: 200px;
+			display: inline-block;
+		}
+
+		div.reveal img.mind-blown {
+			position: absolute;
+			bottom: 7em;
+			right: 2em;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="reveal">
+		<div class="bbd-logo"></div>
+		<div class="corner left"></div>
+		<div class="corner right"></div>
+		<div class="slides">
+
+			<section id="title">
+				<h1>Modernise your javascript with</h1>
+				<img class="main-title" src="images/babel.svg"></img>
+				<br />
+				<br />
+				<h3>
+					by Mike Geyser
+				</h3>
+			</section>
+
+			<section>
+				<h1>Overview</h1>
+				<ul>
+					<li>What is ES 6?</li>
+					<li>What is Babel?</li>
+					<li>Compelling reasons to use ES 6</li>
+					<li>Demo - setting it all up</li>
+				</ul>
+			</section>
+
+			<section>
+				<section>
+					<h1>So, what is ES 6?</h1>
+
+					<ul class="fragment">
+						<li>Significant syntax changes</li>
+						<li>No semantic changes</li>
+						<li>Now referred to as ES 2015</li>
+						<li>Finalised in June 2015</li>
+						<li>Move to a 'yearly' release (ES2016, etc)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Browser support</h1>
+
+					<ul>
+						<li>Chrome 49 - 91%</li>
+						<li>Firefox 45 - 85%</li>
+						<li>Edge 13 - 83%</li>
+						<li class="fragment">Mobile? Don't bother..</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>One javascript</h1>
+
+					<ul>
+						<li>Avoid versioning</li>
+						<li>Backwards compatibility</li>
+						<li>Progressive enhancement</li>
+						<li>This is just the beginning.</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h1>So what is Babel?</h1>
+
+					<ul>
+						<li>Formerly 6to5</li>
+						<li>Javascript-to-javascript compiler</li>
+						<li>Pluggable / composable</li>
+						<li>Build-time, rather than runtime</li>
+						<li>Output can run today</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Compiling</h1>
+					<ul>
+						<li>Source-to-source</li>
+						<li>Transpiling</li>
+						<li>Human readable output</li>
+						<li>Potentially multiple target versions</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Pluggable</h1>
+
+					<ul>
+						<li>Everything is a plugin</li>
+						<li>Does nothing by default</li>
+						<li>Presets (ES2015, ES2016, react)</li>
+						<li>Choose specific modules (experimental, shims)</li>
+						<li>Write own transpiler step (tricky)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Build time</h1>
+
+					<ul>
+						<li>Build tool plugin (cli, grunt, gulp, etc)</li>
+						<li>Environments (browser, node.js, cordova)</li>
+						<li>Frameworks (sails, meteor)</li>
+						<li>Test frameworks</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<div>
+					<blockquote>
+						"Wait, but how is that different from typescript / coffeescript / dart?"
+					</blockquote>
+
+					<img class="fragment" src="images/trollface.png" />
+				</div>
+
+			</section>
+
+			<section>
+				<section>
+					<h1>Compelling reasons to use ES 2015</h1>
+				</section>
+
+				<section>
+					<h1>Let + const</h1>
+
+					<pre>
+						<code class="javascript">
+							// a is hoisted to here
+							// b & c aren't
+
+							if (condition) {
+								  var a = 1;
+								  let b = 1;
+								  const c = 1;
+								  c = 2; // not updated
+							}
+						</code>
+					</pre>
+
+					<ul>
+						<li>Block (rather than function) scoped</li>
+						<li>Const is single-assignment</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Arrow functions</h1>
+
+					<pre>
+						<code class="javascript">
+							var sum = values.map(x => x * 2)
+							                .reduce((x, y) => x + y);
+						</code>
+					</pre>
+
+					<ul>
+						<li>Anonymous function shorthand</li>
+						<li>Lexical this</li>
+						<li>Modern language feature</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Template strings</h1>
+
+					<pre>
+						<code class="javascript">
+							var a = "Centurion",
+							    b = "Developer UG",
+							    c = "Wednesday";
+
+							var greeting = `Hello ${a} ${b}. Happy ${c}!`;
+						</code>
+					</pre>
+
+					<ul>
+						<li>Syntactic sugar</li>
+						<li>Modern language feature</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Destructuring</h1>
+
+					<pre>
+						<code class="javascript">
+							var [a, b] = [1, 2, 3];
+							var {c, d} = {
+								  c: 42,
+								  d: true
+							};
+						</code>
+					</pre>
+
+					<ul>
+						<li>Pattern matching binding</li>
+						<li>Fails softly (to undefined)</li>
+						<img class="fragment mind-blown" src="images/mind-blown.gif" alt="">
+					</ul>
+				</section>
+
+				<section>
+					<h1>Default, rest, spread</h1>
+
+					<pre>
+						<code class="javascript">
+							var thingy = function(first = 0, ...args) {
+								  /**/
+							};
+
+							thingy(...[1,2,3]);
+						</code>
+					</pre>
+
+					<ul>
+						<li>No need to use || coalesce hack</li>
+						<li>No need to use arguments array directly</li>
+						<li>Addresses emergent javascript patterns</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Classes</h1>
+
+					<pre>
+						<code class="javascript">
+							class Dog extends Animal {
+								  constructor(name) {
+									    super(name);
+								  }
+
+								  getName() {
+									    return this.name;
+								  }
+							}
+						</code>
+					</pre>
+
+					<ul>
+						<li>Doesn't change prototypal inheritence</li>
+						<li>Turned out to be a contentious feature</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Much, much more</h1>
+
+					<p>Modules, Generators, Promises, Math, Maps + Sets... </p>
+				</section>
+			</section>
+
+			<section>
+				<h1>Enough!</h1>
+				<h1>Show me the code...</h1>
+			</section>
+			<section>
+					<section>
+							<h1>Questions?</h1>
+							<br>
+							<br>
+							<h2>
+									<img class="twitter" src="images/twitter.png" />@mikegeyser
+							</h2>
+							<h2>
+									<img class="github" src="images/github.png" />github.com/mikegeyser
+							</h2>
+					</section>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.min.js"></script>
+
+	<script>
+		// Full list of configuration options available here:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+			transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+			// Optional libraries used to extend on reveal.js
+			dependencies: [{
+				src: 'lib/js/classList.js',
+				condition: function() {
+					return !document.body.classList;
+				}
+			}, {
+				src: 'plugin/markdown/marked.js',
+				condition: function() {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src: 'plugin/markdown/markdown.js',
+				condition: function() {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src: 'plugin/highlight/highlight.js',
+				async: true,
+				callback: function() {
+					hljs.initHighlightingOnLoad();
+				}
+			}, {
+				src: 'plugin/zoom-js/zoom.js',
+				async: true,
+				condition: function() {
+					return !!document.body.classList;
+				}
+			}, {
+				src: 'plugin/notes/notes.js',
+				async: true,
+				condition: function() {
+					return !!document.body.classList;
+				}
+			}]
+		});
+	</script>
+
+</body>
+
+</html>
